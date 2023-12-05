@@ -1,0 +1,17 @@
+user1
+password
+12345
+user
+1467.56
+
+user2
+goodpassword
+67890
+user
+5763.46
+
+user3
+betterpass
+10001
+user
+8625.26
