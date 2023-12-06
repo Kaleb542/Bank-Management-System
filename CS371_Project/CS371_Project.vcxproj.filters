@@ -24,6 +24,9 @@
     <ClInclude Include="Transaction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="User.cpp">
@@ -38,5 +41,16 @@
     <ClCompile Include="Transaction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="G:\GitHub\CS371_Project\CS371_Project\managers.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="G:\GitHub\CS371_Project\CS371_Project\users.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
