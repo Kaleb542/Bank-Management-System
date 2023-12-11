@@ -24,13 +24,15 @@ bool ReadWrite::read(const string& filename, const string& targetString) const {
 		int found = line.find(searchString);
 
 		if (found != string::npos) {
-			cout << "Found string: " << searchString << endl;
+			//cout << "Found string: " << searchString << endl;
 			return true;
 			break;
 		}
 	}
 
 	inputFile.close();
+
+	return false;
 }
 
 int ReadWrite::findLineNumber(const string& filename, const string& target) const {

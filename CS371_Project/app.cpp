@@ -21,7 +21,6 @@ int main() {
 	// "UI" for the program, will only close on 4
 	bool terminated = false;
 	int input;
-	int userInput;
 
 	string username;
 	string password;
@@ -41,37 +40,23 @@ int main() {
 		switch (input) {
 			case 1:
 				// logic
-				cout << "What are you logging in as?: " << endl;
-				cout << "1. User" << endl;
-				cout << "2. Manager" << endl;
-				cin >> userInput;
+				cout << "What is your username?: ";
+				cin >> username;
 
-				switch (userInput) {
-					case 1: // User Input
-						cout << "What is your username?: ";
-						cin >> username;
+				cout << "What is your password?: ";
+				cin >> password;
 
-						cout << "What is your password?: ";
-						cin >> password;
-
-						// prints out the user's information based on their username and password
-						if (userRead.read("users.txt", username) && userRead.read("users.txt", password)) {
-							id = userRead.getStringFromLine("users.txt", userRead.findLineNumber("users.txt", password) + 1);
-							cout << "ID: " << id << endl;
-							type = userRead.getStringFromLine("users.txt", userRead.findLineNumber("users.txt", password) + 2);
-							cout << "Account type: " << type << endl;
-							balance = userRead.getStringFromLine("users.txt", userRead.findLineNumber("users.txt", password) + 3);
-							cout << "Account balance: $" << balance << endl << endl;
-						}
-						else {
-							cout << "Incorrect username or password." << endl;
-						}
-						break;
-					case 2: // Manager Input
-
-						break;
-					default:
-						cout << "Error, incorrect input.";
+				// prints out the user's information based on their username and password
+				if (userRead.read("users.txt", username) && userRead.read("users.txt", password)) {
+					id = userRead.getStringFromLine("users.txt", userRead.findLineNumber("users.txt", password) + 1);
+					cout << "ID: " << id << endl;
+					type = userRead.getStringFromLine("users.txt", userRead.findLineNumber("users.txt", password) + 2);
+					cout << "Account type: " << type << endl;
+					balance = userRead.getStringFromLine("users.txt", userRead.findLineNumber("users.txt", password) + 3);
+					cout << "Account balance: $" << balance << endl << endl;
+				}
+				else {
+					cout << "Incorrect username or password." << endl;
 				}
 				break;
 			
@@ -80,6 +65,13 @@ int main() {
 				break;
 			case 3:
 				// logic
+				cout << "What is your username?: ";
+				cin >> username;
+
+				cout << "What is your password?: ";
+				cin >> password;
+
+
 				break;
 			case 4:
 				terminated = true;
