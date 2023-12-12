@@ -3,22 +3,30 @@
 
 #include<iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
-/*void Transaction::deposit(double amount) {
-	getBalance() += amount;
+Transaction::Transaction(const BankAccount& account) :account(account) {
+	cout << "Transaction Constructor. " << endl;
+}
+
+Transaction::~Transaction() {
+	cout << "Transaction Destructor. " << endl;
+}
+
+void Transaction::deposit(double amount) {
+	account.deposit(amount);
 }
 
 void Transaction::withdraw(double amount) {
-	if (amount > getBalance()) {
-		cout << "You have insufficient funds. ";
-	}
-	else {
-		balance -= amount;
-		cout << "Please take your funds. ";
-	}
+	account.withdraw(amount);
 }
 
 void Transaction::PrintAccountSummary() {
-	
-}*/
+	cout << endl << "Transaction History for Account #" << account.getAccountNumber() << ":" << endl;
+	vector<string> transactions = account.getTransactions();
+	for (const string& transaction : transactions) {
+		cout << transaction << endl;
+	}
+	cout << "Current Balance: $" << account.getBalance() << endl << endl;
+}

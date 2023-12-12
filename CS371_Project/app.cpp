@@ -1,6 +1,7 @@
 #include "User.h"
 #include "BankAccount.h"
 #include "ReadWrite.h"
+#include "Transaction.h"
 
 #include<iostream>
 using namespace std;
@@ -17,6 +18,16 @@ int main() {
 	//cout << "Account Type: " << acct.getAccountType() << endl;
 	//cout << "Balance: " << acct.getBalance() << endl;
 	//cout << "User: " << acct.getUser() << endl;
+
+	// Testing Transactions
+	User user("KalebE", "password");
+	BankAccount acct(100001, "user", 500.44, user);
+	Transaction transaction(acct);
+	transaction.deposit(100.0);
+	transaction.withdraw(50.0);
+	transaction.deposit(1000.0);
+	transaction.PrintAccountSummary();
+
 
 	// "UI" for the program, will only close on 4
 	bool terminated = false;

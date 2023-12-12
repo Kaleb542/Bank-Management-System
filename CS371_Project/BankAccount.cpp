@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-BankAccount::BankAccount(int accountNumber, string accountType, double balance, User user) :accountNumber(accountNumber), accountType(accountType), balance(balance), user(user) {
+BankAccount::BankAccount(int accountNumber, string accountType, double balance, const User& user) :accountNumber(accountNumber), accountType(accountType), balance(balance), user(user) {
 	cout << "BankAccount Constructor. " << endl;
 }
 
@@ -26,4 +26,27 @@ double BankAccount::getBalance() {
 
 string BankAccount::getUser() {
 	return user.getUsername();
+}
+
+void BankAccount::deposit(double amount) {
+	balance += amount;
+	addTransaction("Deposit: +" + to_string(amount));
+}
+
+void BankAccount::withdraw(double amount) {
+	if (amount > balance) {
+		cout << "You have insufficient funds. ";
+	}
+	else {
+		balance -= amount;
+		addTransaction("Withdrawal: -" + to_string(amount));
+	}
+}
+
+void BankAccount::addTransaction(string transaction) {
+	transactions.push_back(transaction);
+}
+
+vector<string> BankAccount::getTransactions() {
+	return transactions;
 }
