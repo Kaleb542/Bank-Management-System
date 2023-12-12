@@ -22,6 +22,11 @@ public:
 	double getBalance();
 	string getUser();
 
+	void setAccountNumber(int num);
+	void setAccountType(string type);
+	void setBalance(double balance);
+	void setUser(User& user);
+
 	void deposit(double amount);
 	void withdraw(double amount);
 	void addTransaction(string transaction);

@@ -19,3 +19,11 @@ string User::getUsername() {
 string User::getPassword() {
 	return password;
 }
+
+void User::setUsername(string user) {
+	username = user;
+}
+
+void User::setPassword(string pass) {
+	password = pass;
+}

@@ -13,5 +13,8 @@ public:
 
 	string getUsername();
 	string getPassword();
+
+	void setUsername(string user);
+	void setPassword(string pass);
 };
 

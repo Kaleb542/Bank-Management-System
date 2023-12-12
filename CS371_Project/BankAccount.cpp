@@ -28,6 +28,19 @@ string BankAccount::getUser() {
 	return user.getUsername();
 }
 
+void BankAccount::setAccountNumber(int num) {
+	accountNumber = num;
+}
+void BankAccount::setAccountType(string type) {
+	accountType = type;
+}
+void BankAccount::setBalance(double balance) {
+	this->balance = balance;
+}
+void BankAccount::setUser(User& user) {
+	this->user = user;
+}
+
 void BankAccount::deposit(double amount) {
 	balance += amount;
 	addTransaction("Deposit: +" + to_string(amount));
