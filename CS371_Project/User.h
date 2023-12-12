@@ -12,6 +12,8 @@ public:
 	User(string username, string password);
 	~User();
 
+	void createAccount(string username, string password, int accountNum, string accType, double balance) const;
+
 	string getUsername();
 	string getPassword();
 

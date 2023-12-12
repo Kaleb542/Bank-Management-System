@@ -1,4 +1,5 @@
 #include "User.h"
+#include "ReadWrite.h"
 
 #include<iostream>
 #include <string>
@@ -28,4 +29,15 @@ void User::setUsername(string user) {
 
 void User::setPassword(string pass) {
 	password = pass;
+}
+
+void User::createAccount(string username, string password, int accountNum, string accType, double balance) const {
+	ReadWrite rw("users.txt");
+
+	rw.append("users.txt", "");
+	rw.append("users.txt", username);
+	rw.append("users.txt", password);
+	rw.append("users.txt", to_string(accountNum));
+	rw.append("users.txt", accType);
+	rw.append("users.txt", to_string(balance));
 }

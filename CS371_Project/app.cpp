@@ -2,32 +2,12 @@
 #include "BankAccount.h"
 #include "ReadWrite.h"
 #include "Transaction.h"
+#include "Manager.h"
 
 #include<iostream>
 using namespace std;
 
 int main() {
-	//// Testing User class
-	//User user("KalebE", "password");
-	//cout << "UserName: " << user.getUsername() << endl;
-	//cout << "Password: " << user.getPassword() << endl;
-
-	//// Testing BankAccount class
-	//BankAccount acct(100001, "user", 901.47, user);
-	//cout << "Account Number: " << acct.getAccountNumber() << endl;
-	//cout << "Account Type: " << acct.getAccountType() << endl;
-	//cout << "Balance: " << acct.getBalance() << endl;
-	//cout << "User: " << acct.getUser() << endl;
-
-	// Testing Transactions
-	//User user("KalebE", "password");
-	//BankAccount acct(100001, "user", 500.44, user);
-	//Transaction transaction(acct);
-	//transaction.deposit(100.0);
-	//transaction.withdraw(50.0);
-	//transaction.deposit(1000.0);
-	//transaction.PrintAccountSummary();
-
 	// instantiation of variables
 	bool terminated = false;
 	int input;
@@ -45,6 +25,7 @@ int main() {
 	ReadWrite managerRead(managerText);
 
 	User accountUser(username, password);
+	Manager manager(username, password);
 	BankAccount account(accNum, type, balance, accountUser);
 
 	// "UI" for the program, will only close on 4
@@ -56,8 +37,8 @@ int main() {
 		cin >> input;
 
 		switch (input) {
-			// putting line numbers into variables for ease of use
-
+			// TODO: putting line numbers into variables for ease of use
+			// User Login
 			case 1:
 				cout << "What is your username?: ";
 				cin >> username;
@@ -124,10 +105,22 @@ int main() {
 					cout << "Incorrect username or password." << endl;
 				}
 				break;
-			
+
+			// Create account
 			case 2:
-				// logic
+				cout << "Enter a username: " << endl;
+				cin >> username;
+				cout << "Enter a password: " << endl;
+				cin >> password;
+				cout << "Enter an account number (integer): " << endl;
+				cin >> accNum;
+
+				type = "user";
+				balance = 0.00;
+				accountUser.createAccount(username, password, accNum, type, balance);
 				break;
+
+			// Manager
 			case 3:
 				// logic
 				cout << "What is your username?: ";
@@ -138,10 +131,33 @@ int main() {
 
 				if (managerRead.read("managers.txt", username) && managerRead.read("managers.txt", password)) {
 					// TODO: logic for bringing up all user information (usernames, passwords, account types, ids, balances)
+					int inputManager;
+					bool terminatedManager = false;
+
+					do {
+						cout << "What do you want to do?" << endl;
+						cout << "1. Delete an account." << endl;
+						cout << "2. See all user information." << endl;
+						cout << "3. Quit." << endl;
+						cin >> inputManager;
+
+						switch (inputManager) {
+							case 1:
+								break;
+							case 2:
+								break;
+							case 3:
+								terminatedManager = true;
+								break;
+							default:
+								cout << "Invalid option, try again." << endl;
+						}
+					} while (!terminatedManager);
 				} else {
 					cout << "Incorrect username or password." << endl;
 				}
 				break;
+			// Quit
 			case 4:
 				terminated = true;
 				break;
