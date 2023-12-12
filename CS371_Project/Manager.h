@@ -1,20 +1,16 @@
 #pragma once
 #ifndef MANAGER_H
 #define MANAGER_H
+
+#include "User.h"
 #include <string>
 using namespace std;
 
-class Manager 
+class Manager : User
 {
-private:
-	string username;
-	string password;
 public:
 	Manager(string username, string password);
 	~Manager();
-
-	string getUsername() const;
-	string getPassword() const;
 };
 
 

@@ -10,11 +10,3 @@ Manager::Manager(string username, string password) {
 Manager::~Manager() {
 	cout << "Manager destructor" << endl;
 }
-
-string Manager::getUsername() const {
-	return username;
-}
-
-string Manager::getPassword() const {
-	return password;
-}
