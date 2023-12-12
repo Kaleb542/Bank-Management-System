@@ -8,6 +8,7 @@ private:
 	string username;
 	string password;
 public:
+	User();
 	User(string username, string password);
 	~User();
 

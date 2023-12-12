@@ -4,6 +4,8 @@
 #include <string>
 using namespace std;
 
+User::User() {}
+
 User::User(string username, string password) :username(username), password(password) {
 	cout << "User Constructor. " << endl;
 }
