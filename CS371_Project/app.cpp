@@ -28,8 +28,7 @@ int main() {
 	//transaction.deposit(1000.0);
 	//transaction.PrintAccountSummary();
 
-
-	// "UI" for the program, will only close on 4
+	// instantiation of variables
 	bool terminated = false;
 	int input;
 
@@ -39,12 +38,16 @@ int main() {
 	string type;
 	double balance = 0.00;
 
-	ReadWrite userRead("users.txt");
-	ReadWrite managerRead("managers.txt");
+	string userText = "users.txt";
+	string managerText = "managers.txt";
+
+	ReadWrite userRead(userText);
+	ReadWrite managerRead(managerText);
 
 	User accountUser(username, password);
 	BankAccount account(accNum, type, balance, accountUser);
 
+	// "UI" for the program, will only close on 4
 	do {
 		cout << "1. User Login" << endl;
 		cout << "2. Create Account" << endl;
@@ -53,6 +56,8 @@ int main() {
 		cin >> input;
 
 		switch (input) {
+			// putting line numbers into variables for ease of use
+
 			case 1:
 				cout << "What is your username?: ";
 				cin >> username;
@@ -63,12 +68,12 @@ int main() {
 				accountUser.setPassword(password);
 
 				// prints out the user's information based on their username and password
-				if (userRead.read("users.txt", accountUser.getUsername()) && userRead.read("users.txt", accountUser.getPassword())) {
-					account.setAccountNumber(stoi(userRead.getStringFromLine("users.txt", userRead.findLineNumber("users.txt", password) + 1)));
+				if (userRead.read(userText, accountUser.getUsername()) && userRead.read(userText, accountUser.getPassword())) {
+					account.setAccountNumber(stoi(userRead.getStringFromLine(userText, userRead.findLineNumber(userText, password) + 1)));
 					cout << "Account number: " << account.getAccountNumber() << endl;
-					account.setAccountType(userRead.getStringFromLine("users.txt", userRead.findLineNumber("users.txt", password) + 2));
+					account.setAccountType(userRead.getStringFromLine(userText, userRead.findLineNumber(userText, password) + 2));
 					cout << "Account type: " << account.getAccountType() << endl;
-					account.setBalance(stod(userRead.getStringFromLine("users.txt", userRead.findLineNumber("users.txt", password) + 3)));
+					account.setBalance(stod(userRead.getStringFromLine(userText, userRead.findLineNumber(userText, password) + 3)));
 					cout << "Account balance: $" << account.getBalance() << endl << endl;
 
 					int input2;
@@ -93,12 +98,14 @@ int main() {
 								cin >> amount;
 								account.deposit(amount);
 								cout << "$" << amount << " was deposited to your account." << endl << endl;
+								userRead.write(userText, userRead.findLineNumber(userText, password) + 3, to_string(account.getBalance()));
 								break;
 							case 3:
 								cout << "How much do you want to withdraw?: " << endl;
 								cin >> amount;
 								account.withdraw(amount);
 								cout << "$" << amount << " was withdrawn from your account." << endl << endl;
+								userRead.write(userText, userRead.findLineNumber(userText, password) + 3, to_string(account.getBalance()));
 								break;
 							case 4:
 								// logic
