@@ -4,12 +4,17 @@
 #include <string>
 using namespace std;
 
-BankAccount::BankAccount(int accountNumber, string accountType, double balance, User user) :accountNumber(accountNumber), accountType(accountType), balance(balance), user(user) {
-	cout << "BankAccount Constructor. " << endl;
+BankAccount::BankAccount() :accountNumber(0), accountType("none"), balance(-1), user(User(" ", " ")) {
+	//cout << "BankAccount Default Constructor." << endl;
 }
 
+BankAccount::BankAccount(int accountNumber, string accountType, double balance, User user) :accountNumber(accountNumber), accountType(accountType), balance(balance), user(user) {
+	//cout << "BankAccount Constructor. " << endl;
+}
+
+
 BankAccount::~BankAccount() {
-	cout << "BankAccount Destructor. " << endl;
+	//cout << "BankAccount Destructor. " << endl;
 }
 
 int BankAccount::getAccountNumber() {

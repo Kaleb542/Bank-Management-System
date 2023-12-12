@@ -12,6 +12,7 @@ private:
 	double balance;
 	User user;
 public:
+	BankAccount();
 	BankAccount(int accountNumber, string accountType, double balance, User user);
 	~BankAccount();
 

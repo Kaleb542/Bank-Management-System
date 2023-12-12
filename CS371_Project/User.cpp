@@ -5,11 +5,11 @@
 using namespace std;
 
 User::User(string username, string password) :username(username), password(password) {
-	cout << "User Constructor. " << endl;
+	//cout << "User Constructor. " << endl;
 }
 
 User::~User() {
-	cout << "User Destructor. " << endl;
+	//cout << "User Destructor. " << endl;
 }
 
 string User::getUsername() {
