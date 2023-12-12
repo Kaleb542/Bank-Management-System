@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include "ReadWrite.h"
 using namespace std;
 
@@ -87,4 +88,60 @@ string ReadWrite::getStringFromLine(const string& filename, int lineNumber) cons
 	inputFile.close();
 
 	return "";
+}
+
+void ReadWrite::append(const string& filename, string newString) const {
+	// open a file in append mode
+	ofstream outFile(filename, ios::app);
+
+	// check if file is open already
+	if (!outFile.is_open()) {
+		cerr << "Error opening the file." << endl;
+		return;
+	}
+
+	// append string to the end of the file
+	outFile << newString << endl;
+
+	outFile.close();
+	return;
+}
+
+void ReadWrite::write(const string& filename, int lineNum, const string& newString) const {
+	ifstream inFile(filename);
+
+	if (!inFile.is_open()) {
+		cerr << "Error opening the file." << endl;
+		return;
+	}
+
+	vector<string> lines;
+	string line;
+	while (getline(inFile, line)) {
+		lines.push_back(line);
+	}
+
+	inFile.close();
+
+	// check if line number is valid
+	if (lineNum < 1 || lineNum > lines.size()) {
+		cerr << "Invalid line number" << endl;
+		return;
+	}
+
+	lines[lineNum - 1] = newString;
+
+	// write the modified string back to the file
+	ofstream outFile(filename);
+
+	if (!outFile.is_open()) {
+		cerr << "Error opening the file for writing." << endl;
+		return;
+	}
+
+	for (const string& updatedLine : lines) {
+		outFile << updatedLine << endl;
+	}
+
+	outFile.close();
 }
