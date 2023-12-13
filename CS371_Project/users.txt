@@ -2,13 +2,13 @@ user1
 password
 12345
 user
-1857.560000
+1557.560000
 
 user2
 goodpassword
 67890
 user
-6866.460000
+6877.460000
 
 user3
 betterpass

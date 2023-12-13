@@ -21,11 +21,13 @@ int main() {
 	string type;
 	double balance = 0.00;
 
-	string userText = "users.txt";
+	string userText = "users.txt";					
 	string managerText = "managers.txt";
+	string transactionText = "transactions.txt";
 
 	ReadWrite userRead(userText);
 	ReadWrite managerRead(managerText);
+	ReadWrite transactionRead(transactionText);
 
 	User accountUser(username, password);
 	Manager manager(username, password);
@@ -101,11 +103,13 @@ int main() {
 							default:
 								cout << "Incorrect option, try again." << endl;
 						}
-						//TODO: write transaction summary to a log
+
 					} while (!terminated2);
 				} else {
 					cout << "Incorrect username or password." << endl;
 				}
+				// Write transactions to a file, timestamped
+				transactionRead.append(transactionText, transaction.PrintAccountSummary());
 				break;
 
 			// Create account
