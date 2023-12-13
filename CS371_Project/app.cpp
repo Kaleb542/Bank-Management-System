@@ -28,6 +28,8 @@ int main() {
 	Manager manager(username, password);
 	BankAccount account(accNum, type, balance, accountUser);
 
+	Transaction transaction(account);
+
 	// "UI" for the program, will only close on 4
 	do {
 		cout << "1. User Login" << endl;
@@ -64,9 +66,8 @@ int main() {
 						cout << "1. Check balance" << endl;
 						cout << "2. Deposit" << endl;
 						cout << "3. Withdraw" << endl;
-						cout << "4. Make a Transaction" << endl;
-						cout << "5. Display Transaction(s)" << endl;
-						cout << "6. Quit" << endl;
+						cout << "4. Display Transaction(s)" << endl;
+						cout << "5. Quit" << endl;
 						cin >> input2;
 
 						switch (input2) {
@@ -77,24 +78,21 @@ int main() {
 							case 2:
 								cout << "How much do you want to deposit?: " << endl;
 								cin >> amount;
-								account.deposit(amount);
+								transaction.deposit(amount);
 								cout << "$" << amount << " was deposited to your account." << endl << endl;
 								userRead.write(userText, userRead.findLineNumber(userText, password) + 3, to_string(account.getBalance()));
 								break;
 							case 3:
 								cout << "How much do you want to withdraw?: " << endl;
 								cin >> amount;
-								account.withdraw(amount);
+								transaction.withdraw(amount);
 								cout << "$" << amount << " was withdrawn from your account." << endl << endl;
 								userRead.write(userText, userRead.findLineNumber(userText, password) + 3, to_string(account.getBalance()));
 								break;
 							case 4:
-								// logic
+								cout << transaction.PrintAccountSummary();
 								break;
 							case 5:
-								// logic
-								break;
-							case 6:
 								terminated2 = true;
 								break;
 							default:
