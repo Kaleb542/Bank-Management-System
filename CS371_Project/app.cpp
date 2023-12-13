@@ -5,6 +5,9 @@
 #include "Manager.h"
 
 #include<iostream>
+#include<iomanip>
+#include<vector>
+
 using namespace std;
 
 int main() {
@@ -73,20 +76,20 @@ int main() {
 						switch (input2) {
 							double amount;
 							case 1:
-								cout << "Balance: $" << account.getBalance() << endl << endl;
+								cout << fixed << setprecision(2) << "Balance: $" << account.getBalance() << endl << endl;
 								break;
 							case 2:
 								cout << "How much do you want to deposit?: " << endl;
 								cin >> amount;
 								transaction.deposit(amount);
-								cout << "$" << amount << " was deposited to your account." << endl << endl;
+								cout << fixed << setprecision(2) << "$" << amount << " was deposited to your account." << endl << endl;
 								userRead.write(userText, userRead.findLineNumber(userText, password) + 3, to_string(account.getBalance()));
 								break;
 							case 3:
 								cout << "How much do you want to withdraw?: " << endl;
 								cin >> amount;
 								transaction.withdraw(amount);
-								cout << "$" << amount << " was withdrawn from your account." << endl << endl;
+								cout << fixed << setprecision(2) << "$" << amount << " was withdrawn from your account." << endl << endl;
 								userRead.write(userText, userRead.findLineNumber(userText, password) + 3, to_string(account.getBalance()));
 								break;
 							case 4:
@@ -98,6 +101,7 @@ int main() {
 							default:
 								cout << "Incorrect option, try again." << endl;
 						}
+						//TODO: write transaction summary to a log
 					} while (!terminated2);
 				} else {
 					cout << "Incorrect username or password." << endl;

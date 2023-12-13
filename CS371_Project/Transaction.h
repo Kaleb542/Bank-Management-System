@@ -8,9 +8,9 @@ using namespace std;
 class Transaction
 {
 private:
-	BankAccount account;
+	BankAccount& account;
 public:
-	Transaction(const BankAccount& account);
+	Transaction(BankAccount& account);
 	~Transaction();
 
 	void deposit(double amount);

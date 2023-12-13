@@ -1,6 +1,8 @@
 #include "BankAccount.h"
 
 #include<iostream>
+#include<iomanip>
+#include<sstream>
 #include <string>
 using namespace std;
 
@@ -43,7 +45,11 @@ void BankAccount::setUser(User& user) {
 
 void BankAccount::deposit(double amount) {
 	balance += amount;
-	addTransaction("Deposit: +" + to_string(amount));
+
+	// Transaction log
+	stringstream dep;
+	dep << fixed << setprecision(2) << "Deposit: +" << amount;
+	addTransaction(dep.str());
 }
 
 void BankAccount::withdraw(double amount) {
@@ -52,7 +58,11 @@ void BankAccount::withdraw(double amount) {
 	}
 	else {
 		balance -= amount;
-		addTransaction("Withdrawal: -" + to_string(amount));
+
+		// Transaction log
+		stringstream wd;
+		wd << fixed << setprecision(2) << "Withdraw: -" << amount;
+		addTransaction(wd.str());
 	}
 }
 

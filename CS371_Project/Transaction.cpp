@@ -2,11 +2,13 @@
 #include "BankAccount.h"
 
 #include<iostream>
+#include<iomanip>
+#include<sstream>
 #include <string>
 #include <vector>
 using namespace std;
 
-Transaction::Transaction(const BankAccount& account) :account(account) {
+Transaction::Transaction(BankAccount& account) :account(account) {
 	cout << "Transaction Constructor. " << endl;
 }
 
@@ -23,16 +25,13 @@ void Transaction::withdraw(double amount) {
 }
 
 string Transaction::PrintAccountSummary() {
-	string summary;
-	summary += "\nTransaction History for Account #" + to_string(account.getAccountNumber()) + ":\n";
+	stringstream summary;
+	summary << "\nTransaction History for Account #" << account.getAccountNumber() << ":\n";
 
-	//cout << endl << "Transaction History for Account #" << account.getAccountNumber() << ":" << endl;
 	vector<string> transactions = account.getTransactions();
 	for (const string& transaction : transactions) {
-		//cout << transaction << endl;
-		summary += transaction + "\n";
+		summary << fixed << setprecision(2) << transaction + "\n"; // transaction is a string so setprecision does not work. leaving this here in case this changes
 	}
-	//cout << "Current Balance: $" << account.getBalance() << endl << endl;
-	summary += "Current Balance: $" + std::to_string(account.getBalance()) + "\n\n";
-	return summary;
+	summary << fixed << setprecision(2) << "Current Balance: $" << account.getBalance() << "\n\n";
+	return summary.str();
 }
