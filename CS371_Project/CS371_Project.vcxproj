@@ -144,6 +144,7 @@
   <ItemGroup>
     <Text Include="G:\GitHub\CS371_Project\CS371_Project\managers.txt" />
     <Text Include="G:\GitHub\CS371_Project\CS371_Project\users.txt" />
+    <Text Include="transactions.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
