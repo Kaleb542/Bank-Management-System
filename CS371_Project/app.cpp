@@ -33,7 +33,9 @@ int main() {
 	Manager manager(username, password);
 	BankAccount account(accNum, type, balance, accountUser);
 
-	Transaction transaction(account);
+	BankAccount* accountPtr = &account;
+
+	Transaction transaction(accountPtr);
 
 	// "UI" for the program, will only close on 4
 	do {

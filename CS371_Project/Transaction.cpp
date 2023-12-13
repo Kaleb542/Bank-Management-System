@@ -8,7 +8,7 @@
 #include <vector>
 using namespace std;
 
-Transaction::Transaction(BankAccount& account) :account(account) {
+Transaction::Transaction(BankAccount* accountPtr) :account(accountPtr) {
 	cout << "Transaction Constructor. " << endl;
 }
 
@@ -17,22 +17,22 @@ Transaction::~Transaction() {
 }
 
 void Transaction::deposit(double amount) {
-	string transaction = account.deposit(amount).str();
+	string transaction = account->deposit(amount).str();
 	transactions.push_back(transaction);
 }
 
 void Transaction::withdraw(double amount) {
-	string transaction = account.withdraw(amount).str();
+	string transaction = account->withdraw(amount).str();
 	transactions.push_back(transaction);
 }
 
 string Transaction::PrintAccountSummary() {
 	stringstream summary;
-	summary << "\nTransaction History for Account #" << account.getAccountNumber() << ":\n";
+	summary << "\nTransaction History for Account #" << account->getAccountNumber() << ":\n";
 
 	for (const string& transaction : transactions) {
 		summary << fixed << setprecision(2) << transaction + "\n"; // transaction is a string so setprecision does not work. leaving this here in case this changes
 	}
-	summary << fixed << setprecision(2) << "Current Balance: $" << account.getBalance() << "\n\n";
+	summary << fixed << setprecision(2) << "Current Balance: $" << account->getBalance() << "\n\n";
 	return summary.str();
 }

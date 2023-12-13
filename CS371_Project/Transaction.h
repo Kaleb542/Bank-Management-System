@@ -8,10 +8,10 @@ using namespace std;
 class Transaction
 {
 private:
-	BankAccount& account;
+	BankAccount* account;
 	vector<string> transactions;
 public:
-	Transaction(BankAccount& account);
+	Transaction(BankAccount* accountPtr);
 	~Transaction();
 
 	void deposit(double amount);

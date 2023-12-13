@@ -19,3 +19,94 @@ Withdraw: -300.00
 Current Balance: $1757.56
 
 
+
+Transaction History for Account #12345:
+Deposit: +50.00
+Withdraw: -500.00
+Current Balance: $1307.56
+
+
+
+Transaction History for Account #10000001:
+Deposit: +50.00
+Withdraw: -500.00
+Deposit: +10000.00
+Current Balance: $10000.00
+
+
+
+Transaction History for Account #0:
+Current Balance: $0.00
+
+
+
+Transaction History for Account #0:
+Current Balance: $0.00
+
+
+
+Transaction History for Account #67890:
+Current Balance: $6877.46
+
+
+
+Transaction History for Account #67890:
+Current Balance: $6877.46
+
+
+
+Transaction History for Account #0:
+Current Balance: $0.00
+
+
+
+Transaction History for Account #10001:
+Current Balance: $8625.26
+
+
+
+Transaction History for Account #0:
+Current Balance: $0.00
+
+
+
+Transaction History for Account #0:
+Current Balance: $0.00
+
+
+
+Transaction History for Account #67890:
+Deposit: +500.00
+Withdraw: -500.00
+Current Balance: $6877.46
+
+
+
+Transaction History for Account #0:
+Current Balance: $0.00
+
+
+
+Transaction History for Account #0:
+Current Balance: $0.00
+
+
+
+Transaction History for Account #0:
+Current Balance: $0.00
+
+
+
+Transaction History for Account #12345:
+Deposit: +500.00
+Withdraw: -250.00
+Current Balance: $2007.56
+
+
+
+Transaction History for Account #10101:
+Deposit: +500.00
+Withdraw: -250.00
+Current Balance: $0.00
+
+
