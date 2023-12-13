@@ -10,6 +10,8 @@ class Manager : User
 public:
 	Manager(string username, string password);
 	~Manager();
+
+	void deleteAccount(const string& filename, string username) const;
 };
 
 

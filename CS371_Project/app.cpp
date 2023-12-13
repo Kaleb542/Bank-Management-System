@@ -135,10 +135,11 @@ int main() {
 				cout << "What is your password?: ";
 				cin >> password;
 
-				if (managerRead.read("managers.txt", username) && managerRead.read("managers.txt", password)) {
+				if (managerRead.read(managerText, username) && managerRead.read(managerText, password)) {
 					// TODO: logic for bringing up all user information (usernames, passwords, account types, ids, balances)
 					int inputManager;
 					bool terminatedManager = false;
+					string tempUsername;
 
 					do {
 						cout << "What do you want to do?" << endl;
@@ -149,8 +150,14 @@ int main() {
 
 						switch (inputManager) {
 							case 1:
+								cout << "Enter the username you want to delete: " << endl;
+								cin >> tempUsername;
+
+								manager.deleteAccount(userText, tempUsername);
 								break;
 							case 2:
+								cout << "Displaying all user information." << endl;
+								userRead.readAll(userText);
 								break;
 							case 3:
 								terminatedManager = true;

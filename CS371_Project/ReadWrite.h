@@ -15,6 +15,7 @@ public:
 	string getStringFromLine(const string& filename, int lineNumber) const;
 	void append(const string& filename, string newString) const;
 	void write(const string& filename, int lineNum, const string& newString) const;
+	void readAll(const string& filename) const;
 };
 
 #endif // !READWRITE_H

@@ -182,3 +182,25 @@ void ReadWrite::write(const string& filename, int lineNum, const string& newStri
 
 	outFile.close();
 }
+
+/*
+* readAll() iterates through all of the lines within a text file
+* It prints them out in order
+*/
+void ReadWrite::readAll(const string& filename) const {
+	ifstream inFile(filename);
+
+	if (!inFile.is_open()) {
+		cerr << "Error opening file." << endl;
+		return;
+	}
+
+	string line;
+	while (getline(inFile, line)) {
+		cout << line << endl;
+	}
+
+	inFile.close();
+
+	return;
+}
