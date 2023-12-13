@@ -9,6 +9,13 @@ ReadWrite::ReadWrite(const string& filename) {}
 
 ReadWrite::~ReadWrite() {}
 
+/*
+* read() returns a true or false value depending on if the targetString is in the file
+* Errors out if the file cannot be opened and returns false
+* Iterates through the lines, storing them in the line variable
+* If it is found in the current line, return true and break from the function
+* Otherwise it returns false
+*/
 bool ReadWrite::read(const string& filename, const string& targetString) const {
 	ifstream inputFile(filename);
 
@@ -36,6 +43,13 @@ bool ReadWrite::read(const string& filename, const string& targetString) const {
 	return false;
 }
 
+/*
+* findLineNumber() finds the line number based on a string that you give it
+* Errors out if the file cannot be opened
+* Iterates through the file, recording the current line in the line variable
+* If the string is found, return the line number that it is in
+* Else return -1, as it was not found
+*/
 int ReadWrite::findLineNumber(const string& filename, const string& target) const {
 	ifstream inputFile(filename);
 
@@ -65,6 +79,13 @@ int ReadWrite::findLineNumber(const string& filename, const string& target) cons
 	return -1;
 }
 
+/*
+* getStringFromLine() returns a string using a line number (can be found with findLineNumber())
+* Errors out if you cannot open the file
+* Iterates through the lines, saving the current line in currentLine
+* If the currentLine is equal to the lineNumber that we are looking for, return line
+* Else return an empty string as it was not found
+*/
 string ReadWrite::getStringFromLine(const string& filename, int lineNumber) const {
 	ifstream inputFile(filename);
 
@@ -90,6 +111,11 @@ string ReadWrite::getStringFromLine(const string& filename, int lineNumber) cons
 	return "";
 }
 
+/*
+* append() writes text to the end of a file by opening a file in append mode from ofstream
+* Errors out if you cannot open the file
+* Appends the newString to the end of the file
+*/
 void ReadWrite::append(const string& filename, string newString) const {
 	// open a file in append mode
 	ofstream outFile(filename, ios::app);
@@ -107,6 +133,17 @@ void ReadWrite::append(const string& filename, string newString) const {
 	return;
 }
 
+/*
+* write() will write a string to a text file based on what line number you give it and newString
+* Errors out if the file cannot be opened
+* Stores the lines in a vector of type string
+* Reads in each line and appends into the lines vector
+* Checks if the line number is valid
+* Modifies content of the specific line with the new string
+* Opens the file for output
+* Errors out if the file cannot be opened
+* Iterates over modified lines and writes them, with the new string to the output file
+*/
 void ReadWrite::write(const string& filename, int lineNum, const string& newString) const {
 	ifstream inFile(filename);
 
