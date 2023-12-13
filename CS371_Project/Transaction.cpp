@@ -17,18 +17,19 @@ Transaction::~Transaction() {
 }
 
 void Transaction::deposit(double amount) {
-	account.deposit(amount);
+	string transaction = account.deposit(amount).str();
+	transactions.push_back(transaction);
 }
 
 void Transaction::withdraw(double amount) {
-	account.withdraw(amount);
+	string transaction = account.withdraw(amount).str();
+	transactions.push_back(transaction);
 }
 
 string Transaction::PrintAccountSummary() {
 	stringstream summary;
 	summary << "\nTransaction History for Account #" << account.getAccountNumber() << ":\n";
 
-	vector<string> transactions = account.getTransactions();
 	for (const string& transaction : transactions) {
 		summary << fixed << setprecision(2) << transaction + "\n"; // transaction is a string so setprecision does not work. leaving this here in case this changes
 	}

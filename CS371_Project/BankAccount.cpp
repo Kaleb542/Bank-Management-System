@@ -43,33 +43,26 @@ void BankAccount::setUser(User& user) {
 	this->user = user;
 }
 
-void BankAccount::deposit(double amount) {
+stringstream BankAccount::deposit(double amount) {
+	stringstream dep;
 	balance += amount;
 
 	// Transaction log
-	stringstream dep;
 	dep << fixed << setprecision(2) << "Deposit: +" << amount;
-	addTransaction(dep.str());
+	return dep;
 }
 
-void BankAccount::withdraw(double amount) {
+stringstream BankAccount::withdraw(double amount) {
+	stringstream wd;
 	if (amount > balance) {
 		cout << "You have insufficient funds. ";
+		wd << "Insufficient funds for transaction.";
 	}
 	else {
 		balance -= amount;
 
 		// Transaction log
-		stringstream wd;
 		wd << fixed << setprecision(2) << "Withdraw: -" << amount;
-		addTransaction(wd.str());
 	}
-}
-
-void BankAccount::addTransaction(string transaction) {
-	transactions.push_back(transaction);
-}
-
-vector<string> BankAccount::getTransactions() {
-	return transactions;
+	return wd;
 }

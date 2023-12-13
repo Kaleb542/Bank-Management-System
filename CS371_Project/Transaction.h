@@ -9,6 +9,7 @@ class Transaction
 {
 private:
 	BankAccount& account;
+	vector<string> transactions;
 public:
 	Transaction(BankAccount& account);
 	~Transaction();
