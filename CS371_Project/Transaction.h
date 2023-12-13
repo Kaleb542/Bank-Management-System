@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
+
 #include <string>
 #include "BankAccount.h"
 using namespace std;
@@ -16,3 +18,4 @@ public:
 	string PrintAccountSummary();
 };
 
+#endif

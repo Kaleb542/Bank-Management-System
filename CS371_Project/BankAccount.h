@@ -1,6 +1,8 @@
+#ifndef BANKACCOUNT_H
+#define BANKACCOUNT_H
+
 #include "User.h"
 
-#pragma once
 #include <string>
 #include <vector>
 using namespace std;
@@ -33,3 +35,4 @@ public:
 	vector<string> getTransactions();
 };
 
+#endif

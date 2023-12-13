@@ -1,4 +1,3 @@
-#pragma once
 #ifndef READWRITE_H
 #define READWRITE_H
 

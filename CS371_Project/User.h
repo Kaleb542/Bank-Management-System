@@ -1,4 +1,6 @@
-#pragma once
+#ifndef USER_H
+#define USER_H
+
 #include <string>
 using namespace std;
 
@@ -21,3 +23,4 @@ public:
 	void setPassword(string pass);
 };
 
+#endif
